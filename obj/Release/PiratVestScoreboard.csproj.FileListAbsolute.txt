@@ -1,0 +1,10 @@
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\bin\Release\PiratVestScoreboard.exe.config
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\bin\Release\PiratVestScoreboard.exe
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\bin\Release\PiratVestScoreboard.pdb
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.Form1.resources
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.Properties.Resources.resources
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.csproj.GenerateResource.cache
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.csproj.CoreCompileInputs.cache
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.exe
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.pdb
+B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Release\PiratVestScoreboard.csproj.AssemblyReference.cache
