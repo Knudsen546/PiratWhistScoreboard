@@ -8,3 +8,14 @@ B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\bin\Deb
 B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.pdb
 B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.exe
 B:\akjen\Documents\Programmering\PiratVestScoreboard\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.pdb
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.csproj.AssemblyReference.cache
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.csproj.SuggestedBindingRedirects.cache
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.csproj.GenerateResource.cache
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.exe
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.pdb
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.exe.config
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.exe
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.pdb
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.Form1.resources
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.Properties.Resources.resources
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.csproj.CoreCompileInputs.cache
