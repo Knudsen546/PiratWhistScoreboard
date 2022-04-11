@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PiratVestScoreboard
+namespace PiratWhistScoreboard
 {
     public partial class Form1 : Form
     {
         public List<string> textList = new List<string>();
         public List<Player> playerList = new List<Player>();
         public List<int> guessList = new List<int>();
+        public List<int> guessListUpdate = new List<int>();
         public List<int> pointsList = new List<int>();
         public List<Game> gameList = new List<Game>();
         public Form1()
@@ -33,11 +34,25 @@ namespace PiratVestScoreboard
             Guess.ReadOnly = false;
             Points.ReadOnly = false;
             NextRound.Enabled = true;
-            gameList.Add(new Game(textList.Count, 1));
+            gameList.Add(new Game(textList.Count, 0));
+            int zeros = 6;
             foreach (string name in textList)
             {
-                Player player = new Player(name);
+                if (textList.Count <= 5)
+                {
+                    zeros = 3;
+                }
+                else if (textList.Count == 6)
+                {
+                    zeros = 4;
+                }
+                else if(textList.Count == 7)
+                {
+                    zeros = 5;
+                }
+                Player player = new Player(name, zeros);
                 playerList.Add(player);
+                NumberOfZeros.AppendText(player.Zeros + Environment.NewLine);
             }
             textBoxNumberOfCards.Text = gameList[0].NumberOfCards(gameList[0].Round).ToString();
         }
@@ -46,9 +61,81 @@ namespace PiratVestScoreboard
         {
             List<string> tempGuessList = Guess.Text.Split('\n').ToList();
             List<string> tempPointsList = Points.Text.Split('\n').ToList();
+            NumberOfZeros.Clear();
+            string tempText;
+            try
+            {
+                for (int i = 0; i < tempGuessList.Count; i++)
+                {
+                    guessList.Add(Int32.Parse(tempGuessList[i]));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Gæt skal være tal");
+            }
+            try
+            {
+                for (int i = 0; i < tempPointsList.Count; i++)
+                {
+                    pointsList.Add(Int32.Parse(tempPointsList[i]));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Stik skal være tal");
+            }
+            tempGuessList.Clear();
+            tempPointsList.Clear();
+            for (int i = 0; i < guessList.Count; i++)
+            {
+                if (guessList[i] == 0)
+                {
+                    playerList[i].Zeros -= 1;
+                }
+            }
+            if (guessList.Count == playerList.Count)
+            {
+                if (pointsList.Count == playerList.Count)
+                {
+                    if (gameList[0].NumberOfCards(gameList[0].Round) == pointsList.Take(pointsList.Count).Sum())
+                    {
+                        {
+                            Overview.Clear();
+                            for (int i = 0; i < playerList.Count; i++)
+                            {
+                                playerList[i].UpdateScore(guessList[i], pointsList[i]);
+                                Overview.AppendText(playerList[i].Name + "       " + playerList[i].Score + Environment.NewLine);
+                                NumberOfZeros.AppendText(playerList[i].Zeros + Environment.NewLine);
+                            }
+                            gameList[0].Round += 1;
+                            textBoxNumberOfCards.Text = gameList[0].NumberOfCards(gameList[0].Round).ToString();
+                            Guess.Clear();
+                            Points.Clear();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Antal kort i runden og antal stik stemmer ikke overens");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Antal spillere og antal point stemmer ikke overens");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Antal spillere og antal gæt stemmer ikke overens");
+            }
+            guessList.Clear();
+            pointsList.Clear();
+            guessListUpdate.Clear();
             if (gameList[0].GameEnded(gameList[0].Round))
             {
-                Overview.Text.Insert(0, ("Game Ended" + Environment.NewLine));
+                tempText = Overview.Text;
+                Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
+                NumberOfZeros.Clear();
                 Names.ReadOnly = false;
                 Start.Enabled = true;
                 NextRound.Enabled = false;
@@ -60,42 +147,6 @@ namespace PiratVestScoreboard
                 Guess.Clear();
                 Points.Clear();
             }
-            else
-            {
-                Overview.Clear();
-                try
-                {
-                    for (int i = 0; i < tempGuessList.Count; i++)
-                    {
-                        guessList.Add(Int32.Parse(tempGuessList[i]));
-                        pointsList.Add(Int32.Parse(tempPointsList[i]));
-                    }
-                    tempGuessList.Clear();
-                    tempPointsList.Clear();
-                    if (guessList.Count == playerList.Count && pointsList.Count == playerList.Count && (gameList[0].NumberOfCards(gameList[0].Round) == pointsList.Take(pointsList.Count).Sum()))
-                    {
-                        for (int i = 0; i < playerList.Count; i++)
-                        {
-                            playerList[i].UpdateScore(guessList[i], pointsList[i]);
-                            Overview.AppendText(playerList[i].Name + "   " + playerList[i].Score.ToString() + Environment.NewLine);
-                        }
-                        gameList[0].Round += 1;
-                        textBoxNumberOfCards.Text = gameList[0].NumberOfCards(gameList[0].Round).ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Number of Players, Guesses, Points and number of cards are not correct", "Fucking Fejl", MessageBoxButtons.OK);
-                    }
-                    guessList.Clear();
-                    pointsList.Clear();
-                    Guess.Clear();
-                    Points.Clear();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Guess or Points is not correct", "Fucking Fejl", MessageBoxButtons.OK);
-                }
-            }
         }
 
         private void EndGame_Click(object sender, EventArgs e)
@@ -103,6 +154,7 @@ namespace PiratVestScoreboard
             Overview.Text.Insert(0, ("Game Ended" + Environment.NewLine));
             Names.ReadOnly = false;
             Start.Enabled = true;
+            NumberOfZeros.Clear();
             NextRound.Enabled = false;
             EndGame.Enabled = false;
             textBoxNumberOfCards.Clear();
@@ -113,6 +165,29 @@ namespace PiratVestScoreboard
             Points.ReadOnly = true;
             Guess.Clear();
             Points.Clear();
+        }
+
+        private void Guess_TextChanged(object sender, EventArgs e)
+        {
+            List<string> tempGuessListUpdate = new List<string>();
+            tempGuessListUpdate =  Guess.Text.Split('\n').ToList<string>();
+            if (!string.IsNullOrWhiteSpace(tempGuessListUpdate.Last()))
+            {
+                guessListUpdate.Clear();
+                try
+                {
+                    for (int i = 0; i < tempGuessListUpdate.Count; i++)
+                    {
+                        guessListUpdate.Add(Int32.Parse(tempGuessListUpdate[i]));
+                    }
+                    tempGuessListUpdate.Clear();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            textBoxGuessTotal.Text = guessListUpdate.Sum().ToString();
         }
     }
 }

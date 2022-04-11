@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PiratVestScoreboard.Properties
+namespace PiratWhistScoreboard.Properties
 {
 
 

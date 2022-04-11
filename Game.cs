@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PiratVestScoreboard
+namespace PiratWhistScoreboard
 {
     public class Game
     {
@@ -18,17 +18,18 @@ namespace PiratVestScoreboard
         }
         public int NumberOfCards(int round)
         {
-            if(round < 8)
+            if(round < 7)
             {
-                return (8 - round);
+                return (7 - round);
             }
-            else {
-                return (round - 6);
+            else
+            {
+                return (round - 5);
             }
         }
         public bool GameEnded(int round)
         {
-            if(round > 13)
+            if(round > 12)
             {
                 return true;
             }

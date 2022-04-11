@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PiratVestScoreboard
+namespace PiratWhistScoreboard
 {
     public class Player
     {
         public string Name { get; set; }
-        public int Guess { get; set; }
         public int Score { get; set; }
-        public Player(string firstName)
+        public int Zeros { get; set; }
+        public Player(string firstName, int zeros)
         {
             Name = firstName;
             Score = 0;
+            Zeros = zeros;
         }
 
         public void UpdateScore(int Guess, int Points)

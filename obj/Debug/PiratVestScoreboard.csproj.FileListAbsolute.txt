@@ -16,6 +16,6 @@ C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVes
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.exe.config
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.exe
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVestScoreboard.pdb
-C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.Form1.resources
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.Properties.Resources.resources
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.csproj.CoreCompileInputs.cache
+C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratWhistScoreboard.Form1.resources

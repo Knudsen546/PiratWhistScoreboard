@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PiratVestScoreboard
+namespace PiratWhistScoreboard
 {
     partial class Form1
     {
@@ -34,7 +34,7 @@ namespace PiratVestScoreboard
             this.Names = new System.Windows.Forms.TextBox();
             this.Guess = new System.Windows.Forms.TextBox();
             this.Points = new System.Windows.Forms.TextBox();
-            this.players = new System.Windows.Forms.Label();
+            this.labelPlayers = new System.Windows.Forms.Label();
             this.Overview = new System.Windows.Forms.TextBox();
             this.NextRound = new System.Windows.Forms.Button();
             this.labelGuess = new System.Windows.Forms.Label();
@@ -42,10 +42,15 @@ namespace PiratVestScoreboard
             this.textBoxNumberOfCards = new System.Windows.Forms.TextBox();
             this.labelNumberOfCards = new System.Windows.Forms.Label();
             this.EndGame = new System.Windows.Forms.Button();
+            this.labelNumberOfZeros = new System.Windows.Forms.Label();
+            this.NumberOfZeros = new System.Windows.Forms.TextBox();
+            this.labelGuessTotal = new System.Windows.Forms.Label();
+            this.textBoxGuessTotal = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Start
             // 
+            this.Start.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Start.Location = new System.Drawing.Point(12, 415);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(75, 23);
@@ -56,15 +61,18 @@ namespace PiratVestScoreboard
             // 
             // Names
             // 
+            this.Names.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Names.Location = new System.Drawing.Point(16, 43);
             this.Names.Multiline = true;
             this.Names.Name = "Names";
             this.Names.Size = new System.Drawing.Size(100, 205);
             this.Names.TabIndex = 1;
+            this.Names.WordWrap = false;
             // 
             // Guess
             // 
+            this.Guess.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Guess.Location = new System.Drawing.Point(136, 43);
             this.Guess.Multiline = true;
@@ -72,9 +80,11 @@ namespace PiratVestScoreboard
             this.Guess.ReadOnly = true;
             this.Guess.Size = new System.Drawing.Size(100, 205);
             this.Guess.TabIndex = 2;
+            this.Guess.TextChanged += new System.EventHandler(this.Guess_TextChanged);
             // 
             // Points
             // 
+            this.Points.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Points.Location = new System.Drawing.Point(256, 43);
             this.Points.Multiline = true;
@@ -83,31 +93,35 @@ namespace PiratVestScoreboard
             this.Points.Size = new System.Drawing.Size(100, 205);
             this.Points.TabIndex = 3;
             // 
-            // players
+            // labelPlayers
             // 
-            this.players.AutoSize = true;
-            this.players.Location = new System.Drawing.Point(13, 27);
-            this.players.Name = "players";
-            this.players.Size = new System.Drawing.Size(70, 13);
-            this.players.TabIndex = 7;
-            this.players.TabStop = true;
-            this.players.Text = "Insert Players";
+            this.labelPlayers.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelPlayers.AutoSize = true;
+            this.labelPlayers.Location = new System.Drawing.Point(13, 27);
+            this.labelPlayers.Name = "labelPlayers";
+            this.labelPlayers.Size = new System.Drawing.Size(70, 13);
+            this.labelPlayers.TabIndex = 7;
+            this.labelPlayers.TabStop = true;
+            this.labelPlayers.Text = "Insert Players";
             // 
             // Overview
             // 
+            this.Overview.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.Overview.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Overview.HideSelection = false;
-            this.Overview.Location = new System.Drawing.Point(570, 43);
+            this.Overview.Location = new System.Drawing.Point(625, 43);
             this.Overview.Multiline = true;
             this.Overview.Name = "Overview";
             this.Overview.ReadOnly = true;
             this.Overview.Size = new System.Drawing.Size(218, 205);
             this.Overview.TabIndex = 6;
+            this.Overview.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // NextRound
             // 
+            this.NextRound.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.NextRound.Enabled = false;
-            this.NextRound.Location = new System.Drawing.Point(713, 415);
+            this.NextRound.Location = new System.Drawing.Point(768, 415);
             this.NextRound.Name = "NextRound";
             this.NextRound.Size = new System.Drawing.Size(75, 23);
             this.NextRound.TabIndex = 5;
@@ -117,6 +131,7 @@ namespace PiratVestScoreboard
             // 
             // labelGuess
             // 
+            this.labelGuess.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelGuess.AutoSize = true;
             this.labelGuess.Location = new System.Drawing.Point(136, 27);
             this.labelGuess.Name = "labelGuess";
@@ -127,6 +142,7 @@ namespace PiratVestScoreboard
             // 
             // labelPoints
             // 
+            this.labelPoints.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelPoints.AutoSize = true;
             this.labelPoints.Location = new System.Drawing.Point(256, 27);
             this.labelPoints.Name = "labelPoints";
@@ -137,16 +153,19 @@ namespace PiratVestScoreboard
             // 
             // textBoxNumberOfCards
             // 
-            this.textBoxNumberOfCards.Location = new System.Drawing.Point(408, 116);
+            this.textBoxNumberOfCards.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxNumberOfCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumberOfCards.Location = new System.Drawing.Point(476, 116);
             this.textBoxNumberOfCards.Name = "textBoxNumberOfCards";
             this.textBoxNumberOfCards.ReadOnly = true;
-            this.textBoxNumberOfCards.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNumberOfCards.Size = new System.Drawing.Size(100, 29);
             this.textBoxNumberOfCards.TabIndex = 1;
             // 
             // labelNumberOfCards
             // 
+            this.labelNumberOfCards.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNumberOfCards.AutoSize = true;
-            this.labelNumberOfCards.Location = new System.Drawing.Point(411, 100);
+            this.labelNumberOfCards.Location = new System.Drawing.Point(475, 100);
             this.labelNumberOfCards.Name = "labelNumberOfCards";
             this.labelNumberOfCards.Size = new System.Drawing.Size(86, 13);
             this.labelNumberOfCards.TabIndex = 0;
@@ -155,6 +174,8 @@ namespace PiratVestScoreboard
             // 
             // EndGame
             // 
+            this.EndGame.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EndGame.Enabled = false;
             this.EndGame.Location = new System.Drawing.Point(93, 415);
             this.EndGame.Name = "EndGame";
             this.EndGame.Size = new System.Drawing.Size(75, 23);
@@ -162,13 +183,55 @@ namespace PiratVestScoreboard
             this.EndGame.Text = "End Game";
             this.EndGame.UseVisualStyleBackColor = true;
             this.EndGame.Click += new System.EventHandler(this.EndGame_Click);
-            this.EndGame.Enabled = false;
+            // 
+            // labelNumberOfZeros
+            // 
+            this.labelNumberOfZeros.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelNumberOfZeros.AutoSize = true;
+            this.labelNumberOfZeros.Location = new System.Drawing.Point(374, 27);
+            this.labelNumberOfZeros.Name = "labelNumberOfZeros";
+            this.labelNumberOfZeros.Size = new System.Drawing.Size(55, 13);
+            this.labelNumberOfZeros.TabIndex = 9;
+            this.labelNumberOfZeros.Text = "Zeros Left";
+            // 
+            // NumberOfZeros
+            // 
+            this.NumberOfZeros.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.NumberOfZeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberOfZeros.Location = new System.Drawing.Point(377, 43);
+            this.NumberOfZeros.Multiline = true;
+            this.NumberOfZeros.Name = "NumberOfZeros";
+            this.NumberOfZeros.ReadOnly = true;
+            this.NumberOfZeros.Size = new System.Drawing.Size(52, 205);
+            this.NumberOfZeros.TabIndex = 10;
+            // 
+            // labelGuessTotal
+            // 
+            this.labelGuessTotal.AutoSize = true;
+            this.labelGuessTotal.Location = new System.Drawing.Point(67, 261);
+            this.labelGuessTotal.Name = "labelGuessTotal";
+            this.labelGuessTotal.Size = new System.Drawing.Size(67, 13);
+            this.labelGuessTotal.TabIndex = 11;
+            this.labelGuessTotal.Text = "Guess Total:";
+            // 
+            // textBoxGuessTotal
+            // 
+            this.textBoxGuessTotal.Location = new System.Drawing.Point(136, 258);
+            this.textBoxGuessTotal.Name = "textBoxGuessTotal";
+            this.textBoxGuessTotal.ReadOnly = true;
+            this.textBoxGuessTotal.Size = new System.Drawing.Size(100, 20);
+            this.textBoxGuessTotal.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(860, 450);
+            this.Controls.Add(this.textBoxGuessTotal);
+            this.Controls.Add(this.labelGuessTotal);
+            this.Controls.Add(this.NumberOfZeros);
+            this.Controls.Add(this.labelNumberOfZeros);
             this.Controls.Add(this.EndGame);
             this.Controls.Add(this.labelNumberOfCards);
             this.Controls.Add(this.textBoxNumberOfCards);
@@ -176,13 +239,13 @@ namespace PiratVestScoreboard
             this.Controls.Add(this.labelGuess);
             this.Controls.Add(this.NextRound);
             this.Controls.Add(this.Overview);
-            this.Controls.Add(this.players);
+            this.Controls.Add(this.labelPlayers);
             this.Controls.Add(this.Names);
             this.Controls.Add(this.Guess);
             this.Controls.Add(this.Points);
             this.Controls.Add(this.Start);
             this.Name = "Form1";
-            this.Text = "Pirat Vest Scoreboard";
+            this.Text = "Pirat Whist Scoreboard";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,7 +257,7 @@ namespace PiratVestScoreboard
         public System.Windows.Forms.TextBox Names;
         public System.Windows.Forms.TextBox Guess;
         public System.Windows.Forms.TextBox Points;
-        private System.Windows.Forms.Label players;
+        private System.Windows.Forms.Label labelPlayers;
         private System.Windows.Forms.TextBox Overview;
         private System.Windows.Forms.Button NextRound;
         private System.Windows.Forms.Label labelGuess;
@@ -202,6 +265,10 @@ namespace PiratVestScoreboard
         private System.Windows.Forms.TextBox textBoxNumberOfCards;
         private System.Windows.Forms.Label labelNumberOfCards;
         private System.Windows.Forms.Button EndGame;
+        private System.Windows.Forms.Label labelNumberOfZeros;
+        private System.Windows.Forms.TextBox NumberOfZeros;
+        private System.Windows.Forms.Label labelGuessTotal;
+        private System.Windows.Forms.TextBox textBoxGuessTotal;
     }
 }
 
