@@ -9,6 +9,7 @@ namespace PiratWhistScoreboard
     public class Player
     {
         public string Name { get; set; }
+        public int Guess { get; set; }
         public int Score { get; set; }
         public int Zeros { get; set; }
         public Player(string firstName, int zeros)

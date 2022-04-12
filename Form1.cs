@@ -61,13 +61,12 @@ namespace PiratWhistScoreboard
         {
             List<string> tempGuessList = Guess.Text.Split('\n').ToList();
             List<string> tempPointsList = Points.Text.Split('\n').ToList();
-            NumberOfZeros.Clear();
-            string tempText;
             try
             {
                 for (int i = 0; i < tempGuessList.Count; i++)
                 {
                     guessList.Add(Int32.Parse(tempGuessList[i]));
+                    playerList[i].Guess = Int32.Parse(tempGuessList[i]);
                 }
             }
             catch (Exception)
@@ -87,27 +86,38 @@ namespace PiratWhistScoreboard
             }
             tempGuessList.Clear();
             tempPointsList.Clear();
-            for (int i = 0; i < guessList.Count; i++)
-            {
-                if (guessList[i] == 0)
-                {
-                    playerList[i].Zeros -= 1;
-                }
-            }
             if (guessList.Count == playerList.Count)
             {
                 if (pointsList.Count == playerList.Count)
                 {
                     if (gameList[0].NumberOfCards(gameList[0].Round) == pointsList.Take(pointsList.Count).Sum())
                     {
+                        int k = 0;
+                        for (int i = 0; i < playerList.Count; i++)
                         {
-                            Overview.Clear();
-                            for (int i = 0; i < playerList.Count; i++)
+                            if (playerList[i].Zeros == 0 && playerList[i].Guess == 0)
                             {
-                                playerList[i].UpdateScore(guessList[i], pointsList[i]);
-                                Overview.AppendText(playerList[i].Name + "       " + playerList[i].Score + Environment.NewLine);
-                                NumberOfZeros.AppendText(playerList[i].Zeros + Environment.NewLine);
+                                MessageBox.Show(playerList[i].Name + " doesn't have more zeros");
+                                k += 1;
                             }
+                        }
+                        Overview.Clear();
+                        NumberOfZeros.Clear();
+                        for (int i = 0; i < playerList.Count; i++)
+                        {
+                            if (k == 0)
+                            {
+                                if (playerList[i].Guess == 0)
+                                {
+                                    playerList[i].Zeros -= 1;
+                                }
+                                playerList[i].UpdateScore(guessList[i], pointsList[i]);
+                            }
+                            Overview.AppendText(playerList[i].Name + "       " + playerList[i].Score + Environment.NewLine);
+                            NumberOfZeros.AppendText(playerList[i].Zeros + Environment.NewLine);
+                        }
+                        if (k == 0)
+                        {
                             gameList[0].Round += 1;
                             textBoxNumberOfCards.Text = gameList[0].NumberOfCards(gameList[0].Round).ToString();
                             Guess.Clear();
@@ -133,7 +143,7 @@ namespace PiratWhistScoreboard
             guessListUpdate.Clear();
             if (gameList[0].GameEnded(gameList[0].Round))
             {
-                tempText = Overview.Text;
+                string tempText = Overview.Text;
                 Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
                 NumberOfZeros.Clear();
                 Names.ReadOnly = false;
@@ -151,7 +161,8 @@ namespace PiratWhistScoreboard
 
         private void EndGame_Click(object sender, EventArgs e)
         {
-            Overview.Text.Insert(0, ("Game Ended" + Environment.NewLine));
+            string tempText = Overview.Text;
+            Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
             Names.ReadOnly = false;
             Start.Enabled = true;
             NumberOfZeros.Clear();
@@ -166,28 +177,68 @@ namespace PiratWhistScoreboard
             Guess.Clear();
             Points.Clear();
         }
+        private void Guess_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Enter)))
+                e.Handled = true;
+        }
+        private void Points_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Enter)))
+                e.Handled = true;
+        }
 
         private void Guess_TextChanged(object sender, EventArgs e)
         {
-            List<string> tempGuessListUpdate = new List<string>();
-            tempGuessListUpdate =  Guess.Text.Split('\n').ToList<string>();
+            List<string> tempGuessListUpdate = Guess.Text.Split('\n').ToList<string>();
             if (!string.IsNullOrWhiteSpace(tempGuessListUpdate.Last()))
             {
                 guessListUpdate.Clear();
-                try
+                for (int i = 0; i < tempGuessListUpdate.Count; i++)
                 {
-                    for (int i = 0; i < tempGuessListUpdate.Count; i++)
+                    try
                     {
                         guessListUpdate.Add(Int32.Parse(tempGuessListUpdate[i]));
                     }
-                    tempGuessListUpdate.Clear();
+                    catch (Exception)
+                    {
+                        throw;
+                    }
                 }
-                catch (Exception)
-                {
-                    throw;
-                }
+                tempGuessListUpdate.Clear();
             }
             textBoxGuessTotal.Text = guessListUpdate.Sum().ToString();
+        }
+        private Size oldSize;
+        private void Form1_Load(object sender, EventArgs e) => oldSize = base.Size;
+
+        protected override void OnResize(System.EventArgs e)
+        {
+            base.OnResize(e);
+
+            foreach (Control cnt in this.Controls)
+                ResizeAll(cnt, base.Size);
+
+            oldSize = base.Size;
+        }
+        private void ResizeAll(Control control, Size newSize)
+        {
+            int width = newSize.Width - oldSize.Width;
+            control.Left += (control.Left * width) / oldSize.Width;
+            control.Width += (control.Width * width) / oldSize.Width;
+
+            int height = newSize.Height - oldSize.Height;
+            control.Top += (control.Top * height) / oldSize.Height;
+            control.Height += (control.Height * height) / oldSize.Height;
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Shift | Keys.Enter))
+            {
+                NextRound_Click(null, System.EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
