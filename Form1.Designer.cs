@@ -46,6 +46,9 @@ namespace PiratWhistScoreboard
             this.NumberOfZeros = new System.Windows.Forms.TextBox();
             this.labelGuessTotal = new System.Windows.Forms.Label();
             this.textBoxGuessTotal = new System.Windows.Forms.TextBox();
+            this.pictureBoxConfetti = new System.Windows.Forms.PictureBox();
+            this.labelWinner = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConfetti)).BeginInit();
             this.SuspendLayout();
             // 
             // Start
@@ -60,36 +63,48 @@ namespace PiratWhistScoreboard
             // 
             // Names
             // 
-            this.Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Names.ForeColor = System.Drawing.Color.Gray;
             this.Names.Location = new System.Drawing.Point(17, 53);
             this.Names.Multiline = true;
             this.Names.Name = "Names";
             this.Names.Size = new System.Drawing.Size(100, 205);
             this.Names.TabIndex = 1;
+            this.Names.Text = "Please Enter Names";
             this.Names.WordWrap = false;
+            this.Names.Enter += new System.EventHandler(this.Players_Enter);
+            this.Names.Leave += new System.EventHandler(this.Players_Leave);
             // 
             // Guess
             // 
-            this.Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Guess.ForeColor = System.Drawing.Color.Gray;
             this.Guess.Location = new System.Drawing.Point(136, 54);
             this.Guess.Multiline = true;
             this.Guess.Name = "Guess";
             this.Guess.ReadOnly = true;
             this.Guess.Size = new System.Drawing.Size(100, 205);
             this.Guess.TabIndex = 2;
+            this.Guess.Text = "Please Enter Guesses";
             this.Guess.TextChanged += new System.EventHandler(this.Guess_TextChanged);
+            this.Guess.Enter += new System.EventHandler(this.Guess_Enter);
             this.Guess.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Guess_KeyPress);
+            this.Guess.Leave += new System.EventHandler(this.Guess_Leave);
             // 
             // Points
             // 
-            this.Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Points.ForeColor = System.Drawing.Color.Gray;
             this.Points.Location = new System.Drawing.Point(256, 53);
             this.Points.Multiline = true;
             this.Points.Name = "Points";
             this.Points.ReadOnly = true;
             this.Points.Size = new System.Drawing.Size(100, 205);
             this.Points.TabIndex = 3;
+            this.Points.Text = "Please Enter Points";
+            this.Points.Enter += new System.EventHandler(this.Points_Enter);
             this.Points.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Points_KeyPress);
+            this.Points.Leave += new System.EventHandler(this.Points_Leave);
             // 
             // labelPlayers
             // 
@@ -218,12 +233,34 @@ namespace PiratWhistScoreboard
             this.textBoxGuessTotal.Size = new System.Drawing.Size(100, 29);
             this.textBoxGuessTotal.TabIndex = 12;
             // 
+            // pictureBoxConfetti
+            // 
+            this.pictureBoxConfetti.Image = global::PiratVestScoreboard.Properties.Resources.confetti;
+            this.pictureBoxConfetti.Location = new System.Drawing.Point(123, 50);
+            this.pictureBoxConfetti.Name = "pictureBoxConfetti";
+            this.pictureBoxConfetti.Size = new System.Drawing.Size(520, 350);
+            this.pictureBoxConfetti.TabIndex = 13;
+            this.pictureBoxConfetti.TabStop = false;
+            this.pictureBoxConfetti.Visible = false;
+            // 
+            // labelWinner
+            // 
+            this.labelWinner.AutoSize = true;
+            this.labelWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWinner.Location = new System.Drawing.Point(256, 181);
+            this.labelWinner.Name = "labelWinner";
+            this.labelWinner.Size = new System.Drawing.Size(0, 37);
+            this.labelWinner.TabIndex = 14;
+            this.labelWinner.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.pictureBoxConfetti);
+            this.Controls.Add(this.labelWinner);
             this.Controls.Add(this.textBoxGuessTotal);
             this.Controls.Add(this.labelGuessTotal);
             this.Controls.Add(this.NumberOfZeros);
@@ -244,14 +281,10 @@ namespace PiratWhistScoreboard
             this.Name = "Form1";
             this.Text = "Pirat Whist Scoreboard";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConfetti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void Points_KeyPress1(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
@@ -272,6 +305,8 @@ namespace PiratWhistScoreboard
         private System.Windows.Forms.TextBox NumberOfZeros;
         private System.Windows.Forms.Label labelGuessTotal;
         private System.Windows.Forms.TextBox textBoxGuessTotal;
+        private System.Windows.Forms.PictureBox pictureBoxConfetti;
+        private System.Windows.Forms.Label labelWinner;
     }
 }
 

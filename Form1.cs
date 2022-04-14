@@ -25,6 +25,8 @@ namespace PiratWhistScoreboard
 
         public void Start_Click(object sender, EventArgs e)
         {
+            pictureBoxConfetti.Visible = false;
+            labelWinner.Visible = false;
             Overview.Clear();
             playerList.Clear();
             Start.Enabled = false;
@@ -143,6 +145,7 @@ namespace PiratWhistScoreboard
             guessListUpdate.Clear();
             if (gameList[0].GameEnded(gameList[0].Round))
             {
+                int winner = 0;
                 string tempText = Overview.Text;
                 Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
                 NumberOfZeros.Clear();
@@ -156,6 +159,21 @@ namespace PiratWhistScoreboard
                 Points.ReadOnly = true;
                 Guess.Clear();
                 Points.Clear();
+                for (int i = 1; i < playerList.Count; i++)
+                {
+                    if (playerList[i].Score > playerList[winner].Score)
+                    {
+                        winner = i;
+                        labelWinner.Text = playerList[i].Name;
+                    }
+                    else if (playerList[i].Score == playerList[winner].Score)
+                    {
+                        labelWinner.Text += ", " + playerList[i].Name;
+                    }
+                }
+                labelWinner.Text += " has won the game with " + playerList[winner].Score + " points";
+                pictureBoxConfetti.Visible = true;
+                labelWinner.Visible = true;
             }
         }
 
@@ -191,7 +209,7 @@ namespace PiratWhistScoreboard
         private void Guess_TextChanged(object sender, EventArgs e)
         {
             List<string> tempGuessListUpdate = Guess.Text.Split('\n').ToList<string>();
-            if (!string.IsNullOrWhiteSpace(tempGuessListUpdate.Last()))
+            if (!string.IsNullOrWhiteSpace(tempGuessListUpdate.Last()) && !string.Equals(tempGuessListUpdate.Last(), "Please Enter Guesses"))
             {
                 guessListUpdate.Clear();
                 for (int i = 0; i < tempGuessListUpdate.Count; i++)
@@ -239,6 +257,60 @@ namespace PiratWhistScoreboard
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void Players_Enter(object sender, EventArgs e)
+        {
+            if (Names.Text == "Please Enter Names")
+            {
+                Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                Names.Text = "";
+                Names.ForeColor = SystemColors.WindowText;
+            }
+        }
+        private void Players_Leave(object sender, EventArgs e)
+        {
+            if (Names.Text == "")
+            {
+                Names.ForeColor = Color.Gray;
+                Names.Text = "Please Enter Names";
+                Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            }
+        }
+        private void Guess_Enter(object sender, EventArgs e)
+        {
+            if (Guess.Text == "Please Enter Guesses")
+            {
+                Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                Guess.Text = "";
+                Guess.ForeColor = SystemColors.WindowText;
+            }
+        }
+        private void Guess_Leave(object sender, EventArgs e)
+        {
+            if (Guess.Text == "")
+            {
+                Guess.ForeColor = Color.Gray;
+                Guess.Text = "Please Enter Guesses";
+                Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            }
+        }
+        private void Points_Enter(object sender, EventArgs e)
+        {
+            if (Points.Text == "Please Enter Points")
+            {
+                Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                Points.ForeColor = SystemColors.WindowText;
+                Points.Text = "";
+            }
+        }
+        private void Points_Leave(object sender, EventArgs e)
+        {
+            if (Points.Text == "")
+            {
+                Points.ForeColor = Color.Gray;
+                Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                Points.Text = "Please Enter Points";
+            }
         }
     }
 }
