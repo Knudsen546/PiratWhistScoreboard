@@ -99,7 +99,6 @@ namespace PiratWhistScoreboard
                         {
                             if (playerList[i].Zeros == 0 && playerList[i].Guess == 0)
                             {
-                                MessageBox.Show(playerList[i].Name + " doesn't have more zeros");
                                 k += 1;
                             }
                         }
@@ -143,6 +142,7 @@ namespace PiratWhistScoreboard
             guessList.Clear();
             pointsList.Clear();
             guessListUpdate.Clear();
+            textBoxGuessTotal.Text = "";
             if (gameList[0].GameEnded(gameList[0].Round))
             {
                 int winner = 0;
@@ -214,13 +214,21 @@ namespace PiratWhistScoreboard
                 guessListUpdate.Clear();
                 for (int i = 0; i < tempGuessListUpdate.Count; i++)
                 {
-                    try
+                    if (tempGuessListUpdate[i] != "\r")
                     {
-                        guessListUpdate.Add(Int32.Parse(tempGuessListUpdate[i]));
-                    }
-                    catch (Exception)
-                    {
-                        throw;
+                        try
+                        {
+                            guessListUpdate.Add(Int32.Parse(tempGuessListUpdate[i]));
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                        if (playerList[i].Zeros == 0 && guessListUpdate[i] == 0)
+                        {
+                            string temptext = playerList[i].Name + " does not have any more zeros";
+                            MessageBox.Show(temptext);
+                        }
                     }
                 }
                 tempGuessListUpdate.Clear();

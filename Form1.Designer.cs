@@ -218,7 +218,7 @@ namespace PiratWhistScoreboard
             // 
             this.labelGuessTotal.AutoSize = true;
             this.labelGuessTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGuessTotal.Location = new System.Drawing.Point(15, 273);
+            this.labelGuessTotal.Location = new System.Drawing.Point(15, 280);
             this.labelGuessTotal.Name = "labelGuessTotal";
             this.labelGuessTotal.Size = new System.Drawing.Size(115, 24);
             this.labelGuessTotal.TabIndex = 11;
