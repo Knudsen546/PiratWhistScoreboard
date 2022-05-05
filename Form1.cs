@@ -26,7 +26,7 @@ namespace PiratWhistScoreboard
         public void Start_Click(object sender, EventArgs e)
         {
             pictureBoxConfetti.Visible = false;
-            labelWinner.Visible = false;
+            textBoxWinner.Visible = false;
             Overview.Clear();
             playerList.Clear();
             Start.Enabled = false;
@@ -55,6 +55,7 @@ namespace PiratWhistScoreboard
                 Player player = new Player(name, zeros);
                 playerList.Add(player);
                 NumberOfZeros.AppendText(player.Zeros + Environment.NewLine);
+                textBoxStreak.AppendText(player.Streak + Environment.NewLine);
             }
             textBoxNumberOfCards.Text = gameList[0].NumberOfCards(gameList[0].Round).ToString();
         }
@@ -104,6 +105,7 @@ namespace PiratWhistScoreboard
                         }
                         Overview.Clear();
                         NumberOfZeros.Clear();
+                        textBoxStreak.Clear();
                         for (int i = 0; i < playerList.Count; i++)
                         {
                             if (k == 0)
@@ -116,6 +118,7 @@ namespace PiratWhistScoreboard
                             }
                             Overview.AppendText(playerList[i].Name + "       " + playerList[i].Score + Environment.NewLine);
                             NumberOfZeros.AppendText(playerList[i].Zeros + Environment.NewLine);
+                            textBoxStreak.AppendText(playerList[i].Streak + Environment.NewLine);
                         }
                         if (k == 0)
                         {
@@ -164,22 +167,26 @@ namespace PiratWhistScoreboard
                     if (playerList[i].Score > playerList[winner].Score)
                     {
                         winner = i;
-                        labelWinner.Text = playerList[i].Name;
+                        textBoxWinner.Text = playerList[i].Name;
                     }
                     else if (playerList[i].Score == playerList[winner].Score)
                     {
-                        labelWinner.Text += ", " + playerList[i].Name;
+                        textBoxWinner.AppendText(", " + playerList[i].Name);
                     }
                 }
-                labelWinner.Text += " has won the game with " + playerList[winner].Score + " points";
+                textBoxWinner.AppendText(" has won the game with " + playerList[winner].Score + " points");
+                pictureBoxConfetti.BringToFront();
                 pictureBoxConfetti.Visible = true;
-                labelWinner.Visible = true;
+                textBoxWinner.BringToFront();
+                textBoxWinner.Visible = true;
             }
         }
 
         private void EndGame_Click(object sender, EventArgs e)
         {
+            int winner = 0;
             string tempText = Overview.Text;
+            textBoxWinner.Text = playerList[winner].Name;
             Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
             Names.ReadOnly = false;
             Start.Enabled = true;
@@ -194,6 +201,23 @@ namespace PiratWhistScoreboard
             Points.ReadOnly = true;
             Guess.Clear();
             Points.Clear();
+            for (int i = 1; i < playerList.Count; i++)
+            {
+                if (playerList[i].Score > playerList[winner].Score)
+                {
+                    winner = i;
+                    textBoxWinner.Text = playerList[i].Name;
+                }
+                else if (playerList[i].Score == playerList[winner].Score)
+                {
+                    textBoxWinner.AppendText(", " + playerList[i].Name);
+                }
+            }
+            textBoxWinner.AppendText(" has won the game with " + playerList[winner].Score + " points");
+            pictureBoxConfetti.BringToFront();
+            pictureBoxConfetti.Visible = true;
+            textBoxWinner.BringToFront();
+            textBoxWinner.Visible = true;
         }
         private void Guess_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -208,6 +232,7 @@ namespace PiratWhistScoreboard
 
         private void Guess_TextChanged(object sender, EventArgs e)
         {
+            int diffCardsPoints = 0;
             List<string> tempGuessListUpdate = Guess.Text.Split('\n').ToList<string>();
             if (!string.IsNullOrWhiteSpace(tempGuessListUpdate.Last()) && !string.Equals(tempGuessListUpdate.Last(), "Please Enter Guesses"))
             {
@@ -226,14 +251,18 @@ namespace PiratWhistScoreboard
                         }
                         if (playerList[i].Zeros == 0 && guessListUpdate[i] == 0)
                         {
-                            string temptext = playerList[i].Name + " does not have any more zeros";
-                            MessageBox.Show(temptext);
+                            MessageBox.Show(playerList[i].Name + " does not have any more zeros");
                         }
                     }
                 }
                 tempGuessListUpdate.Clear();
             }
             textBoxGuessTotal.Text = guessListUpdate.Sum().ToString();
+            if (gameList.Count != 0)
+            {
+                diffCardsPoints = guessListUpdate.Sum() - gameList[0].NumberOfCards(gameList[0].Round);
+            }
+            textBoxDifference.Text = diffCardsPoints.ToString();
         }
         private Size oldSize;
         private void Form1_Load(object sender, EventArgs e) => oldSize = base.Size;

@@ -19,3 +19,13 @@ C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\bin\Debug\PiratVes
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.Properties.Resources.resources
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratVestScoreboard.csproj.CoreCompileInputs.cache
 C:\Users\akjen\OneDrive\Dokumenter\GitHub\PiratVestScoreboard\obj\Debug\PiratWhistScoreboard.Form1.resources
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\bin\Debug\PiratVestScoreboard.exe.config
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\bin\Debug\PiratVestScoreboard.exe
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\bin\Debug\PiratVestScoreboard.pdb
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratVestScoreboard.csproj.AssemblyReference.cache
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratWhistScoreboard.Form1.resources
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratVestScoreboard.Properties.Resources.resources
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratVestScoreboard.csproj.GenerateResource.cache
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratVestScoreboard.csproj.CoreCompileInputs.cache
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratVestScoreboard.exe
+B:\akjen\Documents\GitHub\PiratWhistScoreboard\obj\Debug\PiratVestScoreboard.pdb
