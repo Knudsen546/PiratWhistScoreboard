@@ -74,6 +74,7 @@ namespace PiratWhistScoreboard
             this.Names.Name = "Names";
             this.Names.Size = new System.Drawing.Size(151, 205);
             this.Names.TabIndex = 1;
+            this.Names.TabStop = true;
             this.Names.Text = "Please Enter Names";
             this.Names.WordWrap = false;
             this.Names.Enter += new System.EventHandler(this.Players_Enter);
@@ -118,7 +119,7 @@ namespace PiratWhistScoreboard
             this.labelPlayers.Name = "labelPlayers";
             this.labelPlayers.Size = new System.Drawing.Size(71, 24);
             this.labelPlayers.TabIndex = 7;
-            this.labelPlayers.TabStop = true;
+            this.labelPlayers.TabStop = false;
             this.labelPlayers.Text = "Players";
             // 
             // Overview
@@ -153,7 +154,7 @@ namespace PiratWhistScoreboard
             this.labelGuess.Name = "labelGuess";
             this.labelGuess.Size = new System.Drawing.Size(64, 24);
             this.labelGuess.TabIndex = 3;
-            this.labelGuess.TabStop = true;
+            this.labelGuess.TabStop = false;
             this.labelGuess.Text = "Guess";
             // 
             // labelPoints
@@ -164,7 +165,7 @@ namespace PiratWhistScoreboard
             this.labelPoints.Name = "labelPoints";
             this.labelPoints.Size = new System.Drawing.Size(61, 24);
             this.labelPoints.TabIndex = 2;
-            this.labelPoints.TabStop = true;
+            this.labelPoints.TabStop = false;
             this.labelPoints.Text = "Points";
             // 
             // textBoxNumberOfCards
@@ -175,6 +176,7 @@ namespace PiratWhistScoreboard
             this.textBoxNumberOfCards.ReadOnly = true;
             this.textBoxNumberOfCards.Size = new System.Drawing.Size(64, 29);
             this.textBoxNumberOfCards.TabIndex = 1;
+            this.textBoxNumberOfCards.TabStop = false;
             // 
             // labelNumberOfCards
             // 
@@ -184,7 +186,7 @@ namespace PiratWhistScoreboard
             this.labelNumberOfCards.Name = "labelNumberOfCards";
             this.labelNumberOfCards.Size = new System.Drawing.Size(158, 24);
             this.labelNumberOfCards.TabIndex = 0;
-            this.labelNumberOfCards.TabStop = true;
+            this.labelNumberOfCards.TabStop = false;
             this.labelNumberOfCards.Text = "Number of Cards:";
             // 
             // EndGame
@@ -197,6 +199,7 @@ namespace PiratWhistScoreboard
             this.EndGame.Text = "End Game";
             this.EndGame.UseVisualStyleBackColor = true;
             this.EndGame.Click += new System.EventHandler(this.EndGame_Click);
+            this.EndGame.TabStop = true;
             // 
             // labelNumberOfZeros
             // 
@@ -207,6 +210,7 @@ namespace PiratWhistScoreboard
             this.labelNumberOfZeros.Size = new System.Drawing.Size(93, 24);
             this.labelNumberOfZeros.TabIndex = 9;
             this.labelNumberOfZeros.Text = "Zeros Left";
+            this.labelNumberOfZeros.TabStop = false;
             // 
             // NumberOfZeros
             // 
@@ -217,6 +221,7 @@ namespace PiratWhistScoreboard
             this.NumberOfZeros.ReadOnly = true;
             this.NumberOfZeros.Size = new System.Drawing.Size(64, 205);
             this.NumberOfZeros.TabIndex = 10;
+            this.NumberOfZeros.TabStop = false;
             // 
             // labelGuessTotal
             // 
@@ -227,6 +232,7 @@ namespace PiratWhistScoreboard
             this.labelGuessTotal.Size = new System.Drawing.Size(115, 24);
             this.labelGuessTotal.TabIndex = 11;
             this.labelGuessTotal.Text = "Guess Total:";
+            this.labelGuessTotal.TabStop = false;
             // 
             // textBoxGuessTotal
             // 
@@ -236,6 +242,7 @@ namespace PiratWhistScoreboard
             this.textBoxGuessTotal.ReadOnly = true;
             this.textBoxGuessTotal.Size = new System.Drawing.Size(64, 29);
             this.textBoxGuessTotal.TabIndex = 12;
+            this.textBoxGuessTotal.TabStop = false;
             // 
             // pictureBoxConfetti
             // 
@@ -267,7 +274,7 @@ namespace PiratWhistScoreboard
             this.labelDiffernce.Name = "labelDiffernce";
             this.labelDiffernce.Size = new System.Drawing.Size(100, 24);
             this.labelDiffernce.TabIndex = 15;
-            this.labelDiffernce.TabStop = true;
+            this.labelDiffernce.TabStop = false;
             this.labelDiffernce.Text = "Difference:";
             // 
             // textBoxDifference
@@ -278,6 +285,7 @@ namespace PiratWhistScoreboard
             this.textBoxDifference.ReadOnly = true;
             this.textBoxDifference.Size = new System.Drawing.Size(64, 29);
             this.textBoxDifference.TabIndex = 16;
+            this.textBoxDifference.TabStop = false;
             // 
             // textBoxStreak
             // 
@@ -288,6 +296,7 @@ namespace PiratWhistScoreboard
             this.textBoxStreak.ReadOnly = true;
             this.textBoxStreak.Size = new System.Drawing.Size(64, 205);
             this.textBoxStreak.TabIndex = 18;
+            this.textBoxStreak.TabStop = false;
             // 
             // labelStreak
             // 
@@ -298,6 +307,7 @@ namespace PiratWhistScoreboard
             this.labelStreak.Size = new System.Drawing.Size(62, 24);
             this.labelStreak.TabIndex = 17;
             this.labelStreak.Text = "Streak";
+            this.labelStreak.TabStop = false;
             // 
             // Form1
             // 

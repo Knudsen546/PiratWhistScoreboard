@@ -27,6 +27,9 @@ namespace PiratWhistScoreboard
         {
             pictureBoxConfetti.Visible = false;
             textBoxWinner.Visible = false;
+            Start.TabStop = false;
+            NextRound.TabStop = true;
+            Names.TabStop = false;
             Overview.Clear();
             playerList.Clear();
             Start.Enabled = false;
@@ -148,37 +151,7 @@ namespace PiratWhistScoreboard
             textBoxGuessTotal.Text = "";
             if (gameList[0].GameEnded(gameList[0].Round))
             {
-                int winner = 0;
-                string tempText = Overview.Text;
-                Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
-                NumberOfZeros.Clear();
-                Names.ReadOnly = false;
-                Start.Enabled = true;
-                NextRound.Enabled = false;
-                textBoxNumberOfCards.Clear();
-                gameList.Remove(gameList[0]);
-                EndGame.Enabled = false;
-                Guess.ReadOnly = true;
-                Points.ReadOnly = true;
-                Guess.Clear();
-                Points.Clear();
-                for (int i = 1; i < playerList.Count; i++)
-                {
-                    if (playerList[i].Score > playerList[winner].Score)
-                    {
-                        winner = i;
-                        textBoxWinner.Text = playerList[i].Name;
-                    }
-                    else if (playerList[i].Score == playerList[winner].Score)
-                    {
-                        textBoxWinner.AppendText(", " + playerList[i].Name);
-                    }
-                }
-                textBoxWinner.AppendText(" has won the game with " + playerList[winner].Score + " points");
-                pictureBoxConfetti.BringToFront();
-                pictureBoxConfetti.Visible = true;
-                textBoxWinner.BringToFront();
-                textBoxWinner.Visible = true;
+                EndGame_Click(sender, e);
             }
         }
 
@@ -189,6 +162,9 @@ namespace PiratWhistScoreboard
             textBoxWinner.Text = playerList[winner].Name;
             Overview.Text = (("Game Ended" + Environment.NewLine) + tempText);
             Names.ReadOnly = false;
+            Start.TabStop = true;
+            Names.TabStop = true;
+            NextRound.TabStop = false;
             Start.Enabled = true;
             NumberOfZeros.Clear();
             NextRound.Enabled = false;
@@ -288,7 +264,7 @@ namespace PiratWhistScoreboard
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Shift | Keys.Enter))
+            if (keyData == (Keys.Shift | Keys.Enter) && NextRound.Enabled == true)
             {
                 NextRound_Click(null, System.EventArgs.Empty);
                 return true;
