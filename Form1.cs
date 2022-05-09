@@ -149,6 +149,7 @@ namespace PiratWhistScoreboard
             pointsList.Clear();
             guessListUpdate.Clear();
             textBoxGuessTotal.Text = "";
+            textBoxDifference.Text = "";
             if (gameList[0].GameEnded(gameList[0].Round))
             {
                 EndGame_Click(sender, e);
@@ -210,12 +211,12 @@ namespace PiratWhistScoreboard
         {
             int diffCardsPoints = 0;
             List<string> tempGuessListUpdate = Guess.Text.Split('\n').ToList<string>();
-            if (!string.IsNullOrWhiteSpace(tempGuessListUpdate.Last()) && !string.Equals(tempGuessListUpdate.Last(), "Please Enter Guesses"))
+            if (!string.Equals(tempGuessListUpdate.Last(), "Please Enter Guesses"))
             {
                 guessListUpdate.Clear();
                 for (int i = 0; i < tempGuessListUpdate.Count; i++)
                 {
-                    if (tempGuessListUpdate[i] != "\r")
+                    if (tempGuessListUpdate[i] != "\r" && !string.IsNullOrWhiteSpace(tempGuessListUpdate[i]))
                     {
                         try
                         {
