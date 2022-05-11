@@ -57,7 +57,7 @@ namespace PiratWhistScoreboard
             // 
             // Start
             // 
-            this.Start.Location = new System.Drawing.Point(12, 426);
+            this.Start.Location = new System.Drawing.Point(19, 593);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(75, 23);
             this.Start.TabIndex = 0;
@@ -67,14 +67,13 @@ namespace PiratWhistScoreboard
             // 
             // Names
             // 
-            this.Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Names.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Names.ForeColor = System.Drawing.Color.Gray;
-            this.Names.Location = new System.Drawing.Point(17, 53);
+            this.Names.Location = new System.Drawing.Point(17, 47);
             this.Names.Multiline = true;
             this.Names.Name = "Names";
-            this.Names.Size = new System.Drawing.Size(151, 205);
+            this.Names.Size = new System.Drawing.Size(210, 251);
             this.Names.TabIndex = 1;
-            this.Names.TabStop = true;
             this.Names.Text = "Please Enter Names";
             this.Names.WordWrap = false;
             this.Names.Enter += new System.EventHandler(this.Players_Enter);
@@ -82,15 +81,14 @@ namespace PiratWhistScoreboard
             // 
             // Guess
             // 
-            this.Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Guess.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Guess.ForeColor = System.Drawing.Color.Gray;
-            this.Guess.Location = new System.Drawing.Point(174, 53);
+            this.Guess.Location = new System.Drawing.Point(415, 47);
             this.Guess.Multiline = true;
             this.Guess.Name = "Guess";
             this.Guess.ReadOnly = true;
-            this.Guess.Size = new System.Drawing.Size(64, 205);
+            this.Guess.Size = new System.Drawing.Size(64, 251);
             this.Guess.TabIndex = 2;
-            this.Guess.Text = "Please Enter Guesses";
             this.Guess.TextChanged += new System.EventHandler(this.Guess_TextChanged);
             this.Guess.Enter += new System.EventHandler(this.Guess_Enter);
             this.Guess.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Guess_KeyPress);
@@ -98,15 +96,14 @@ namespace PiratWhistScoreboard
             // 
             // Points
             // 
-            this.Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Points.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Points.ForeColor = System.Drawing.Color.Gray;
-            this.Points.Location = new System.Drawing.Point(255, 53);
+            this.Points.Location = new System.Drawing.Point(552, 47);
             this.Points.Multiline = true;
             this.Points.Name = "Points";
             this.Points.ReadOnly = true;
-            this.Points.Size = new System.Drawing.Size(64, 205);
+            this.Points.Size = new System.Drawing.Size(64, 251);
             this.Points.TabIndex = 3;
-            this.Points.Text = "Please Enter Points";
             this.Points.Enter += new System.EventHandler(this.Points_Enter);
             this.Points.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Points_KeyPress);
             this.Points.Leave += new System.EventHandler(this.Points_Leave);
@@ -114,23 +111,22 @@ namespace PiratWhistScoreboard
             // labelPlayers
             // 
             this.labelPlayers.AutoSize = true;
-            this.labelPlayers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPlayers.Location = new System.Drawing.Point(13, 27);
+            this.labelPlayers.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlayers.Location = new System.Drawing.Point(13, 9);
             this.labelPlayers.Name = "labelPlayers";
-            this.labelPlayers.Size = new System.Drawing.Size(71, 24);
+            this.labelPlayers.Size = new System.Drawing.Size(105, 31);
             this.labelPlayers.TabIndex = 7;
-            this.labelPlayers.TabStop = false;
             this.labelPlayers.Text = "Players";
             // 
             // Overview
             // 
-            this.Overview.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Overview.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Overview.HideSelection = false;
-            this.Overview.Location = new System.Drawing.Point(649, 53);
+            this.Overview.Location = new System.Drawing.Point(860, 47);
             this.Overview.Multiline = true;
             this.Overview.Name = "Overview";
             this.Overview.ReadOnly = true;
-            this.Overview.Size = new System.Drawing.Size(218, 205);
+            this.Overview.Size = new System.Drawing.Size(248, 251);
             this.Overview.TabIndex = 6;
             this.Overview.TabStop = false;
             this.Overview.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -138,7 +134,7 @@ namespace PiratWhistScoreboard
             // NextRound
             // 
             this.NextRound.Enabled = false;
-            this.NextRound.Location = new System.Drawing.Point(792, 426);
+            this.NextRound.Location = new System.Drawing.Point(1033, 593);
             this.NextRound.Name = "NextRound";
             this.NextRound.Size = new System.Drawing.Size(75, 23);
             this.NextRound.TabIndex = 5;
@@ -149,105 +145,101 @@ namespace PiratWhistScoreboard
             // labelGuess
             // 
             this.labelGuess.AutoSize = true;
-            this.labelGuess.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGuess.Location = new System.Drawing.Point(170, 27);
+            this.labelGuess.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGuess.Location = new System.Drawing.Point(400, 9);
             this.labelGuess.Name = "labelGuess";
-            this.labelGuess.Size = new System.Drawing.Size(64, 24);
+            this.labelGuess.Size = new System.Drawing.Size(93, 31);
             this.labelGuess.TabIndex = 3;
-            this.labelGuess.TabStop = false;
             this.labelGuess.Text = "Guess";
             // 
             // labelPoints
             // 
             this.labelPoints.AutoSize = true;
-            this.labelPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPoints.Location = new System.Drawing.Point(251, 27);
+            this.labelPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPoints.Location = new System.Drawing.Point(539, 9);
             this.labelPoints.Name = "labelPoints";
-            this.labelPoints.Size = new System.Drawing.Size(61, 24);
+            this.labelPoints.Size = new System.Drawing.Size(90, 31);
             this.labelPoints.TabIndex = 2;
-            this.labelPoints.TabStop = false;
             this.labelPoints.Text = "Points";
             // 
             // textBoxNumberOfCards
             // 
-            this.textBoxNumberOfCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNumberOfCards.Location = new System.Drawing.Point(174, 299);
+            this.textBoxNumberOfCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNumberOfCards.Location = new System.Drawing.Point(415, 348);
             this.textBoxNumberOfCards.Name = "textBoxNumberOfCards";
             this.textBoxNumberOfCards.ReadOnly = true;
-            this.textBoxNumberOfCards.Size = new System.Drawing.Size(64, 29);
+            this.textBoxNumberOfCards.Size = new System.Drawing.Size(64, 38);
             this.textBoxNumberOfCards.TabIndex = 1;
             this.textBoxNumberOfCards.TabStop = false;
             // 
             // labelNumberOfCards
             // 
             this.labelNumberOfCards.AutoSize = true;
-            this.labelNumberOfCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumberOfCards.Location = new System.Drawing.Point(10, 302);
+            this.labelNumberOfCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumberOfCards.Location = new System.Drawing.Point(181, 351);
             this.labelNumberOfCards.Name = "labelNumberOfCards";
-            this.labelNumberOfCards.Size = new System.Drawing.Size(158, 24);
+            this.labelNumberOfCards.Size = new System.Drawing.Size(228, 31);
             this.labelNumberOfCards.TabIndex = 0;
-            this.labelNumberOfCards.TabStop = false;
             this.labelNumberOfCards.Text = "Number of Cards:";
+            this.labelNumberOfCards.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EndGame
             // 
             this.EndGame.Enabled = false;
-            this.EndGame.Location = new System.Drawing.Point(93, 426);
+            this.EndGame.Location = new System.Drawing.Point(100, 593);
             this.EndGame.Name = "EndGame";
             this.EndGame.Size = new System.Drawing.Size(75, 23);
             this.EndGame.TabIndex = 8;
             this.EndGame.Text = "End Game";
             this.EndGame.UseVisualStyleBackColor = true;
             this.EndGame.Click += new System.EventHandler(this.EndGame_Click);
-            this.EndGame.TabStop = true;
             // 
             // labelNumberOfZeros
             // 
             this.labelNumberOfZeros.AutoSize = true;
-            this.labelNumberOfZeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumberOfZeros.Location = new System.Drawing.Point(332, 27);
+            this.labelNumberOfZeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumberOfZeros.Location = new System.Drawing.Point(240, 9);
             this.labelNumberOfZeros.Name = "labelNumberOfZeros";
-            this.labelNumberOfZeros.Size = new System.Drawing.Size(93, 24);
+            this.labelNumberOfZeros.Size = new System.Drawing.Size(137, 31);
             this.labelNumberOfZeros.TabIndex = 9;
             this.labelNumberOfZeros.Text = "Zeros Left";
-            this.labelNumberOfZeros.TabStop = false;
             // 
             // NumberOfZeros
             // 
-            this.NumberOfZeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumberOfZeros.Location = new System.Drawing.Point(336, 53);
+            this.NumberOfZeros.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberOfZeros.Location = new System.Drawing.Point(279, 47);
             this.NumberOfZeros.Multiline = true;
             this.NumberOfZeros.Name = "NumberOfZeros";
             this.NumberOfZeros.ReadOnly = true;
-            this.NumberOfZeros.Size = new System.Drawing.Size(64, 205);
+            this.NumberOfZeros.Size = new System.Drawing.Size(64, 251);
             this.NumberOfZeros.TabIndex = 10;
             this.NumberOfZeros.TabStop = false;
             // 
             // labelGuessTotal
             // 
             this.labelGuessTotal.AutoSize = true;
-            this.labelGuessTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGuessTotal.Location = new System.Drawing.Point(53, 267);
+            this.labelGuessTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGuessTotal.Location = new System.Drawing.Point(240, 307);
             this.labelGuessTotal.Name = "labelGuessTotal";
-            this.labelGuessTotal.Size = new System.Drawing.Size(115, 24);
+            this.labelGuessTotal.Size = new System.Drawing.Size(169, 31);
             this.labelGuessTotal.TabIndex = 11;
             this.labelGuessTotal.Text = "Guess Total:";
-            this.labelGuessTotal.TabStop = false;
+            this.labelGuessTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxGuessTotal
             // 
-            this.textBoxGuessTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxGuessTotal.Location = new System.Drawing.Point(174, 264);
+            this.textBoxGuessTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxGuessTotal.Location = new System.Drawing.Point(415, 304);
             this.textBoxGuessTotal.Name = "textBoxGuessTotal";
             this.textBoxGuessTotal.ReadOnly = true;
-            this.textBoxGuessTotal.Size = new System.Drawing.Size(64, 29);
+            this.textBoxGuessTotal.Size = new System.Drawing.Size(64, 38);
             this.textBoxGuessTotal.TabIndex = 12;
             this.textBoxGuessTotal.TabStop = false;
             // 
             // pictureBoxConfetti
             // 
             this.pictureBoxConfetti.Image = global::PiratVestScoreboard.Properties.Resources.confetti;
-            this.pictureBoxConfetti.Location = new System.Drawing.Point(123, 53);
+            this.pictureBoxConfetti.Location = new System.Drawing.Point(279, 143);
             this.pictureBoxConfetti.Name = "pictureBoxConfetti";
             this.pictureBoxConfetti.Size = new System.Drawing.Size(520, 350);
             this.pictureBoxConfetti.TabIndex = 13;
@@ -257,7 +249,9 @@ namespace PiratWhistScoreboard
             // textBoxWinner
             // 
             this.textBoxWinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxWinner.Location = new System.Drawing.Point(134, 200);
+            this.textBoxWinner.Location = new System.Drawing.Point(290, 284);
+            this.textBoxWinner.MaximumSize = new System.Drawing.Size(495, 64);
+            this.textBoxWinner.MinimumSize = new System.Drawing.Size(495, 64);
             this.textBoxWinner.Multiline = true;
             this.textBoxWinner.Name = "textBoxWinner";
             this.textBoxWinner.ReadOnly = true;
@@ -269,52 +263,51 @@ namespace PiratWhistScoreboard
             // labelDiffernce
             // 
             this.labelDiffernce.AutoSize = true;
-            this.labelDiffernce.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDiffernce.Location = new System.Drawing.Point(68, 337);
+            this.labelDiffernce.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDiffernce.Location = new System.Drawing.Point(262, 395);
             this.labelDiffernce.Name = "labelDiffernce";
-            this.labelDiffernce.Size = new System.Drawing.Size(100, 24);
+            this.labelDiffernce.Size = new System.Drawing.Size(147, 31);
             this.labelDiffernce.TabIndex = 15;
-            this.labelDiffernce.TabStop = false;
             this.labelDiffernce.Text = "Difference:";
+            this.labelDiffernce.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxDifference
             // 
-            this.textBoxDifference.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDifference.Location = new System.Drawing.Point(174, 334);
+            this.textBoxDifference.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDifference.Location = new System.Drawing.Point(415, 392);
             this.textBoxDifference.Name = "textBoxDifference";
             this.textBoxDifference.ReadOnly = true;
-            this.textBoxDifference.Size = new System.Drawing.Size(64, 29);
+            this.textBoxDifference.Size = new System.Drawing.Size(64, 38);
             this.textBoxDifference.TabIndex = 16;
             this.textBoxDifference.TabStop = false;
             // 
             // textBoxStreak
             // 
-            this.textBoxStreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxStreak.Location = new System.Drawing.Point(471, 53);
+            this.textBoxStreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxStreak.Location = new System.Drawing.Point(776, 47);
             this.textBoxStreak.Multiline = true;
             this.textBoxStreak.Name = "textBoxStreak";
             this.textBoxStreak.ReadOnly = true;
-            this.textBoxStreak.Size = new System.Drawing.Size(64, 205);
+            this.textBoxStreak.Size = new System.Drawing.Size(64, 251);
             this.textBoxStreak.TabIndex = 18;
             this.textBoxStreak.TabStop = false;
             // 
             // labelStreak
             // 
             this.labelStreak.AutoSize = true;
-            this.labelStreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStreak.Location = new System.Drawing.Point(467, 27);
+            this.labelStreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStreak.Location = new System.Drawing.Point(761, 9);
             this.labelStreak.Name = "labelStreak";
-            this.labelStreak.Size = new System.Drawing.Size(62, 24);
+            this.labelStreak.Size = new System.Drawing.Size(93, 31);
             this.labelStreak.TabIndex = 17;
             this.labelStreak.Text = "Streak";
-            this.labelStreak.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.ClientSize = new System.Drawing.Size(1120, 628);
             this.Controls.Add(this.pictureBoxConfetti);
             this.Controls.Add(this.textBoxStreak);
             this.Controls.Add(this.labelStreak);
@@ -337,7 +330,7 @@ namespace PiratWhistScoreboard
             this.Controls.Add(this.Guess);
             this.Controls.Add(this.Points);
             this.Controls.Add(this.Start);
-            this.MinimumSize = new System.Drawing.Size(900, 500);
+            this.MinimumSize = new System.Drawing.Size(1136, 667);
             this.Name = "Form1";
             this.Text = "Pirat Whist Scoreboard";
             this.Load += new System.EventHandler(this.Form1_Load);
